@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Loading from "../../components/Loading";
 import OrderChart from "../../components/Dashboard/Chart/OrderChart";
+import SessionCharts from "../../components/Dashboard/Charts/SessionCharts";
+import Charts from "../../components/Dashboard/Charts/Charts";
 const Statistics = () => {
   const axiosSecure = useAxiosSecure();
   const { data, isLoading } = useQuery({
@@ -72,16 +74,8 @@ const Statistics = () => {
         </div>
 
         <div className="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
-          {/*Sales Bar Chart */}
-          <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
-            {/* Chart goes here.. */}
-            {/* <OrderChart barChartData={data?.totalBlog} /> */}
-          </div>
-          {/* Calender */}
-          <div className=" relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden">
-            {/* Calender */}
-            {/* <Calendar /> */}
-          </div>
+          <Charts />
+          <SessionCharts />
         </div>
       </div>
     </div>

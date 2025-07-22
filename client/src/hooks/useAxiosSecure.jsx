@@ -4,8 +4,8 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 
 const axiosSecure = axios.create({
-  // baseURL: `https://nexustudy.vercel.app`,
-  baseURL: `http://localhost:5000`,
+  baseURL: `https://nexustudy.vercel.app`,
+  // baseURL: `http://localhost:5000`,
 });
 
 const useAxiosSecure = () => {
