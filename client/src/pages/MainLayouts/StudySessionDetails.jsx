@@ -133,7 +133,7 @@ const StudySessionDetails = () => {
     bookedSession?.sessionId === id;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-2xl mt-6">
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-2xl mt-6 pt-20">
       <h2 className="text-2xl font-bold text-indigo-500  mb-3">{title}</h2>
       <p className="text-gray-700 text-sm mb-4">{description}</p>
 

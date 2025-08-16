@@ -19,7 +19,7 @@ const Sessions = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h3 className="text-4xl font-bold">Session</h3>
+      <h3 className="text-4xl font-bold text-indigo-500">Sessions</h3>
       <p className="py-5">Explore your knowledge with our Sessions</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-16">
         {sessions.slice(0, 6).map((session, index) => (

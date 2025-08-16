@@ -7,30 +7,36 @@ const SessionCard = ({ session }) => {
   console.log(session);
 
   return (
-    <div className="border rounded-lg shadow hover:shadow-md p-5 bg-white transition">
-      <h2 className="text-xl font-semibold mb-2">{session.title}</h2>
+    <div className="border border-gray-100 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 bg-white p-5">
+      <h2 className="text-lg font-semibold text-gray-800 mb-2">
+        {session.title.length > 30
+          ? session.title.slice(0, 30) + "..."
+          : session.title}
+      </h2>
       <p className="text-gray-600 mb-4">
         {session.description.length > 100
           ? session.description.slice(0, 100) + "..."
           : session.description}
       </p>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <span
-          className={`text-sm font-medium px-3 py-1 rounded-full ${
-            isClosed ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+          className={`text-xs font-medium px-3 py-1 rounded-full ${
+            isClosed
+              ? "bg-red-50 text-red-600 border border-red-100"
+              : "bg-green-50 text-green-600 border border-green-100"
           }`}
         >
           {isClosed ? "Closed" : "Ongoing"}
         </span>
-        <button className="text-blue-600 bg-green-100 rounded-full px-3 py-1  text-sm font-medium">
+        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100">
           {session?.registrationFee === 0
-            ? "free"
-            : `Fee: ${session?.registrationFee} /=`}
-        </button>
+            ? "Free"
+            : `Fee: ${session?.registrationFee} ৳`}
+        </span>
         <Link to={`/session-details/${session._id}`}>
-          <button className="bg-green-100 text-green-700 rounded-full py-1 px-3 cursor-pointer">
-            read more
+          <button className="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100 hover:bg-indigo-100 transition">
+            Read More →
           </button>
         </Link>
       </div>
