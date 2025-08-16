@@ -4,7 +4,7 @@ import useTitle from "../../hooks/useTitle";
 const Contact = () => {
   useTitle("Contact | NexuStudy ");
   return (
-    <div className="px-6 py-12 w-11/12 mx-auto">
+    <div className="px-6 py-12 w-11/12 mx-auto pt-20">
       <h2 className="text-4xl font-bold text-center text-indigo-500 mb-10">
         Contact Us
       </h2>

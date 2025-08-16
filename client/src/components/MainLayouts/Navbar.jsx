@@ -33,7 +33,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="bg-[#F4EDEA] shadow-sm">
+    <div className="fixed top-0 left-0 w-full bg-[#F4EDEA] shadow-sm z-50">
       <div className="navbar w-11/12 mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -174,8 +174,22 @@ const Navbar = () => {
         <div className="navbar-end gap-5">
           {!user ? (
             <div className="flex gap-5">
-              <NavLink to={"/login"}>Login</NavLink>
-              <NavLink to={"/register"}>Register</NavLink>
+              <NavLink
+                to={"/login"}
+                className={({ isActive }) =>
+                  isActive ? "text-indigo-500 font-semibold" : "text-black"
+                }
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to={"/register"}
+                className={({ isActive }) =>
+                  isActive ? "text-indigo-500 font-semibold" : "text-black"
+                }
+              >
+                Register
+              </NavLink>
             </div>
           ) : (
             <div className="dropdown dropdown-end">

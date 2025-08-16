@@ -8,7 +8,7 @@ import useTitle from "../../hooks/useTitle";
 const Home = () => {
   useTitle("Home | NexuStudy ");
   return (
-    <div>
+    <div className="pt-20">
       <Banner />
       <Sessions />
       <AboutUs />

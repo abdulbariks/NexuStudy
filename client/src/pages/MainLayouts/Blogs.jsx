@@ -34,8 +34,10 @@ const Blogs = () => {
   const selectedBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6 text-center">All Blogs</h2>
+    <div className="max-w-6xl mx-auto px-4 py-8 pt-20">
+      <h2 className="text-3xl font-bold mb-6 text-center text-indigo-500">
+        All Blogs
+      </h2>
 
       {/* Blog Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

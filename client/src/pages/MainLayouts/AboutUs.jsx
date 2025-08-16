@@ -23,7 +23,7 @@ const tutors = [
 const AboutUs = () => {
   useTitle("AboutUs | NexuStudy ");
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 py-12 w-11/12 mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 py-12 w-11/12 mx-auto pt-20">
       <div className="text-gray-800 space-y-5">
         <h2 className="text-3xl font-bold text-indigo-500">About Us</h2>
         <p className="text-justify leading-relaxed">
