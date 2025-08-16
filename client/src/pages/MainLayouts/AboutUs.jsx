@@ -24,7 +24,6 @@ const AboutUs = () => {
   useTitle("AboutUs | NexuStudy ");
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-6 py-12 w-11/12 mx-auto">
-      {/* Left Side - About Text */}
       <div className="text-gray-800 space-y-5">
         <h2 className="text-3xl font-bold text-indigo-500">About Us</h2>
         <p className="text-justify leading-relaxed">
@@ -41,8 +40,6 @@ const AboutUs = () => {
           content, and session approval workflows.
         </p>
       </div>
-
-      {/* Right Side - Tutor Cards */}
       <div className="flex flex-col">
         <h3 className="text-2xl font-bold mb-5 text-indigo-500">
           Your Best Tutors
@@ -51,12 +48,12 @@ const AboutUs = () => {
           {tutors.map((tutor, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg rounded-xl p-4 text-center border border-gray-100"
+              className="bg-white shadow-lg rounded-xl p-4 text-center border border-gray-100 flex flex-col items-center"
             >
               <img
                 src={tutor.image}
                 alt={tutor.name}
-                className="w-full h-40  rounded-md mb-3"
+                className="w-40 h-40 object-fill rounded-md mb-3 "
               />
               <h3 className="text-lg font-semibold text-gray-700">
                 {tutor.name}
