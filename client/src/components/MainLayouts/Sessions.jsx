@@ -27,7 +27,7 @@ const Sessions = () => {
         ))}
       </div>
       <Link to={"study-session"}>
-        <button className="bg-amber-50 py-3 px-5 my-10 cursor-pointer">
+        <button className="bg-indigo-500 hover:bg-indigo-700 py-3 px-5 my-10 cursor-pointer rounded-md ">
           More Sessions
         </button>
       </Link>
