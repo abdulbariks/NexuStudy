@@ -22,25 +22,21 @@ const Register = () => {
   const from = location.state?.from || "/";
 
   const onSubmit = async (data) => {
-    console.log(data);
     const image = data.image[0];
-    console.log("image image", image);
     const imageUrl = await imageUpload(image);
 
     createUser(data.email, data.password)
-      .then(async (result) => {
-        console.log(result.user);
-
-        // update userinfo in the database
+      .then(async () => {
+        // save user info in db
         const userInfo = {
           name: data.name,
           email: data.email,
           image: imageUrl,
         };
 
-        const userRes = await axiosInstance.post("/users", userInfo);
-        console.log(userRes.data);
-        // update user profile in firebase
+        await axiosInstance.post("/users", userInfo);
+
+        // update firebase profile
         const userProfile = {
           displayName: data.name,
           photoURL: imageUrl,
@@ -50,7 +46,7 @@ const Register = () => {
             Swal.fire({
               icon: "success",
               title: "Student Created!",
-              text: "Your Student Account was successfully.",
+              text: "Your Student Account was successfully created.",
               timer: 2000,
               toast: true,
               showConfirmButton: false,
@@ -66,55 +62,63 @@ const Register = () => {
         console.error(error);
       });
   };
+
   return (
     <div className="flex justify-center items-center my-5">
-      <div className="card bg-[#F4EDEA] w-11/12 mx-auto md:w-8/12 lg:w-6/12 shadow-2xl">
+      <div className="card bg-[#F4EDEA] dark:bg-gray-900 dark:border dark:border-gray-700 w-11/12 mx-auto md:w-8/12 lg:w-6/12 shadow-2xl mt-16">
         <div className="card-body">
-          <h1 className="text-5xl font-bold text-center text-indigo-500">
+          <h1 className="text-5xl font-bold text-center text-indigo-500 dark:text-indigo-400">
             Create Account
           </h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <fieldset className="fieldset">
               {/* name field */}
-              <label className="label font-bold">Enter Your Name</label>
+              <label className="label font-bold text-gray-800 dark:text-gray-200">
+                Enter Your Name
+              </label>
               <input
                 type="text"
                 {...register("name", { required: true })}
-                className="input w-full"
+                className="input w-full dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"
                 placeholder="Enter Your Name"
               />
-              {errors.email?.type === "required" && (
+              {errors.name?.type === "required" && (
                 <p className="text-red-500">Name is required</p>
               )}
-              {/* name field */}
-              <label className="label font-bold">
-                Select Your Profile picture
+
+              {/* image field */}
+              <label className="label font-bold text-gray-800 dark:text-gray-200">
+                Select Your Profile Picture
               </label>
               <input
                 type="file"
                 {...register("image", { required: true })}
                 accept="image/*"
-                className="input w-full"
-                placeholder="Select Your Profile picture"
+                className="file-input w-full dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"
               />
 
               {/* email field */}
-              <label className="label font-bold">Enter Your Email</label>
+              <label className="label font-bold text-gray-800 dark:text-gray-200">
+                Enter Your Email
+              </label>
               <input
                 type="email"
                 {...register("email", { required: true })}
-                className="input w-full"
+                className="input w-full dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"
                 placeholder="Enter Your Email"
               />
               {errors.email?.type === "required" && (
                 <p className="text-red-500">Email is required</p>
               )}
-              {/* password field*/}
-              <label className="label font-bold">Enter Your Password</label>
+
+              {/* password field */}
+              <label className="label font-bold text-gray-800 dark:text-gray-200">
+                Enter Your Password
+              </label>
               <input
                 type="password"
                 {...register("password", { required: true, minLength: 6 })}
-                className="input w-full"
+                className="input w-full dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"
                 placeholder="Enter Your Password"
               />
               {errors.password?.type === "required" && (
@@ -129,19 +133,21 @@ const Register = () => {
               <div>
                 <Link
                   to={"/forgot-password"}
-                  className="link link-hover font-bold"
+                  className="link link-hover font-bold dark:text-indigo-400"
                 >
                   Forgot password?
                 </Link>
               </div>
+
               <button className="btn btn-primary text-white mt-4">
                 Register
               </button>
             </fieldset>
-            <p className="text-center text-xl">
+
+            <p className="text-center text-xl dark:text-gray-300">
               <small>
                 Already have an account?{" "}
-                <Link className="font-bold" to="/login">
+                <Link className="font-bold dark:text-indigo-400" to="/login">
                   Login
                 </Link>
               </small>

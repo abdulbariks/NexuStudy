@@ -22,7 +22,12 @@ const Blogs = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center mt-10">Loading...</p>;
+  if (isLoading)
+    return (
+      <p className="text-center mt-10 text-gray-800 dark:text-gray-200">
+        Loading...
+      </p>
+    );
   if (isError) {
     Swal.fire("Error", "Failed to fetch blogs", "error");
     return null;
@@ -34,8 +39,8 @@ const Blogs = () => {
   const selectedBlogs = blogs.slice(startIndex, startIndex + blogsPerPage);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 pt-20">
-      <h2 className="text-3xl font-bold mb-6 text-center text-indigo-500">
+    <div className="max-w-6xl mx-auto px-4 py-8 pt-20 dark:bg-gray-900 transition-colors duration-300">
+      <h2 className="text-3xl font-bold mb-6 text-center text-indigo-500 dark:text-indigo-400">
         All Blogs
       </h2>
 
@@ -44,7 +49,7 @@ const Blogs = () => {
         {selectedBlogs.map((blog) => (
           <div
             key={blog._id}
-            className="bg-white shadow-md rounded-lg overflow-hidden"
+            className="bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-700 rounded-lg overflow-hidden transition-colors duration-300"
           >
             <img
               src={blog.image}
@@ -52,12 +57,14 @@ const Blogs = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
-              <p className="text-sm text-gray-500 mb-2">
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
+                {blog.title}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
                 By {blog.author} on{" "}
                 {new Date(blog.createdDate).toLocaleDateString()}
               </p>
-              <p className="text-gray-700 text-sm">
+              <p className="text-gray-700 dark:text-gray-200 text-sm">
                 {blog.description.slice(0, 100)}...
               </p>
             </div>
@@ -72,10 +79,10 @@ const Blogs = () => {
             <button
               key={i}
               onClick={() => setCurrentPage(i + 1)}
-              className={`px-4 py-2 rounded ${
+              className={`px-4 py-2 rounded transition-colors duration-300 ${
                 currentPage === i + 1
                   ? "bg-indigo-500 text-white"
-                  : "bg-indigo-700 text-gray-700"
+                  : "bg-indigo-700 text-gray-200 dark:bg-gray-700 dark:text-gray-300"
               }`}
             >
               {i + 1}

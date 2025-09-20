@@ -35,29 +35,33 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center my-5">
-      <div className="card bg-[#F4EDEA] w-11/12 mx-auto md:w-8/12 lg:w-6/12 shadow-2xl">
+      <div className="card bg-[#F4EDEA] dark:bg-gray-900 dark:border dark:border-gray-700 w-11/12 mx-auto md:w-8/12 lg:w-6/12 shadow-2xl mt-16 transition-colors duration-300">
         <div className="card-body">
           <h1 className="text-5xl font-bold text-center text-indigo-500">
             Please Login
           </h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <fieldset className="fieldset">
-              <label className="label font-bold">Enter Your Email</label>
+              <label className="label font-bold text-gray-700 dark:text-gray-200">
+                Enter Your Email
+              </label>
               <input
                 type="email"
                 {...register("email")}
-                className="input w-full"
+                className="input w-full bg-white dark:bg-gray-800 dark:text-gray-100 border border-gray-300 dark:border-gray-600"
                 placeholder="Enter Your Email"
               />
 
-              <label className="label font-bold">Enter Your Password</label>
+              <label className="label font-bold text-gray-700 dark:text-gray-200 mt-4">
+                Enter Your Password
+              </label>
               <input
                 type="password"
                 {...register("password", {
                   required: true,
                   minLength: 6,
                 })}
-                className="input w-full"
+                className="input w-full bg-white dark:bg-gray-800 dark:text-gray-100 border border-gray-300 dark:border-gray-600"
                 placeholder="Enter Your Password"
               />
               {errors.password?.type === "required" && (
@@ -72,7 +76,7 @@ const Login = () => {
               <div>
                 <Link
                   to={"/forgot-password"}
-                  className="link link-hover font-bold"
+                  className="link link-hover font-bold text-indigo-500"
                 >
                   Forgot password?
                 </Link>
@@ -80,16 +84,20 @@ const Login = () => {
 
               <button className="btn btn-primary text-white mt-4">Login</button>
             </fieldset>
-            <p className="text-center text-xl">
+            <p className="text-center text-xl mt-4">
               <small>
                 New to this website?{" "}
-                <Link state={{ from }} className="font-bold" to="/register">
+                <Link
+                  state={{ from }}
+                  className="font-bold text-indigo-500"
+                  to="/register"
+                >
                   Register
                 </Link>
               </small>
             </p>
           </form>
-          <GoogleSignIn></GoogleSignIn>
+          <GoogleSignIn />
         </div>
       </div>
     </div>
